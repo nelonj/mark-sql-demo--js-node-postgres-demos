@@ -34,13 +34,13 @@ doDemo();
  * This promise will resolve to the results including
  * the inserted or updated row.
  */
-function upsertScore(client, username, score) {
+function upsertScore(client, username, score) { //passing in client from the main doDemo function in which client was defined as new Client()
   return client.query(
     `INSERT INTO hiscores(username, score, time)
     VALUES($1, $2, now()) 
     ON CONFLICT (username)
     DO UPDATE SET score = $2, time=now()
-    RETURNING *`,
+    RETURNING *`, // RETURNING allows me to visualise the changes my query has just made (given it's not a SELECT)
     [username, score]
   );
 }

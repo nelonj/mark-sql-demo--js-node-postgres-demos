@@ -8,7 +8,7 @@ const { Client } = require("pg");
 // Specifically, you should provide a DB connection string as DATABASE_URL in .env
 require("dotenv").config();
 
-if (!process.env.DATABASE_URL) {
+if (!process.env.DATABASE_URL) { // ! simply means: does not exist
   throw "No DATABASE_URL env var!  Have you made a .env file?  And set up dotenv?";
 }
 
